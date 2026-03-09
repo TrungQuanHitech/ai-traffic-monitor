@@ -31,10 +31,11 @@ export const useYOLO = (
     async function loadModel() {
       setStatus('Loading YOLOv8 Model...');
       try {
-        ort.env.wasm.wasmPaths = 'https://cdn.jsdelivr.net/npm/onnxruntime-web@1.17.1/dist/';
+        // Use a consistent version for WASM paths that matches package.json
+        ort.env.wasm.wasmPaths = 'https://cdn.jsdelivr.net/npm/onnxruntime-web@1.24.3/dist/';
         const modelUrl = 'https://raw.githubusercontent.com/Hyuto/yolov8-onnxruntime-web/master/public/model/yolov8n.onnx';
         const session = await ort.InferenceSession.create(modelUrl, {
-          executionProviders: ['webgl'],
+          executionProviders: ['webgl', 'wasm'],
           graphOptimizationLevel: 'all'
         });
         setModel(session);
