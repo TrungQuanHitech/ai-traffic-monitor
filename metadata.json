@@ -1,0 +1,5 @@
+{
+  "name": "AI Traffic Monitor",
+  "description": "RTSP stream monitoring with AI vehicle detection and ROI alerts.",
+  "requestFramePermissions": []
+}
